@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="d.css">
+</head>
+<style>
+    /* إعدادات عامة لتهيئة الصفحة */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: sans-serif;
+        padding: 10px;
+        background-color: #f5f5f5;
+        /* دعم القراءة من اليمين لليسار تلقائياً */
+        direction: rtl;
+    }
+
+    /* تطبيق التأثير على الصفحة بالكامل عند الدخول */
+    .pres {
+        background: linear-gradient(135deg, rgb(77, 68, 68) 30%, #94908e 100%);
+        border-radius: 10px;
+        min-height: 100px;
+        padding: 20px;
+        text-align: center;
+        color: aliceblue;
+        font-size: 20px;
+        border-style: double;
+        margin-bottom: 20px;
+    }
+
+    .v {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .card-roop {
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        font-size: 24px;
+        margin: 10px auto;
+        border-style: double;
+        color: rgb(0, 0, 0);
+    }
+
+    button {
+        background: #f39f04;
+        border-radius: 3px;
+        border-style: double;
+        width: 100%;
+        max-width: 400px;
+        font-size: 24px;
+        color: rgb(0, 136, 255);
+        font-weight: bold;
+        cursor: pointer;
+        padding: 5px;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .c {
+        text-align: right;
+        text-shadow: 1px 3px 5px #ff0000;
+        border-style: groove;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* 🌟 الحاوية الرئيسية للكروت لترتيبها تلقائياً */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 10px;
+    }
+
+    /* 🌟 تم توحيد كود الكروت وإزالة الأبعاد الثابتة */
+    .card,
+    .card1,
+    .card2,
+    .card3,
+    .qw,
+    .qw2,
+    .qw3,
+    .qw4 {
+        background: #ebebeb;
+        border-style: double;
+        text-align: center;
+        width: 100%;
+        /* تأخذ كامل مساحة الحاوية المتاحة لها */
+        padding: 20px;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+        /* تم حذف position: absolute و top و right لضمان عدم التداخل */
+    }
+
+    /* تأثير التحويم */
+    .card:hover,
+    .card1:hover,
+    .card2:hover,
+    .card3:hover,
+    .qw:hover,
+    .qw2:hover,
+    .qw3:hover,
+    .qw4:hover {
+        transform: translateY(-10px);
+    }
+
+    .w {
+        background: #ffb895;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    /* 📱 تعديلات خاصة بالشاشات الصغيرة جداً (الموبايل) */
+    @media (max-width: 480px) {
+        .pres {
+            font-size: 16px;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        .cards-container {
+            grid-template-columns: 1fr;
+            /* كارت واحد في كل سطر للموبايل */
+        }
+    }
+</style>
+
+<body>
+    <div class="pres">
+        <h2 class="v">المتجر تسوق المشتريات</h2>
+        <div id="voon" class="boop"></div>
+    </div>
+    <div class="card-roop">
+        <h3>🛒سله المشتريات</h3>
+        <h2 class="c"> :المجموع الحالي</h2>
+        <ul id="book" class="op">
+
+
+        </ul>
+        <button id="b" class="k" checked="">اتمام المشتريات</button>
+    </div>
+    <div class="card">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+    </div>
+    <div class="card1">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="card2">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="card3">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+
+
+    </div>
+    <div class="qw">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="qw2">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="qw3">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="qw4">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+
+</body>
+<script>
+    // 1. تحديد العناصر الأساسية من الصفحة
+    const cartList = document.getElementById('book'); // القائمة ul التي تعرض المنتجات
+    const totalPriceElement = document.querySelector('.c'); // عنوان المجموع الحالي h2
+    const checkoutButton = document.getElementById('b'); // زر إتمام المشتريات
+    const addToCartButtons = document.querySelectorAll('.w'); // جميع أزرار إضافة للسلة
+
+    let totalAmount = 0; // متغير لتخزين المجموع الإجمالي
+
+    // 2. إضافة حدث الضغط لكل أزرار "اضافه سله المشتريات"
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // الحصول على الكارت الأب للزر المكبوس
+            const card = this.parentElement;
+
+            // استخراج اسم البطاقة والسعر من الكارت
+            const cardName = card.querySelector('h1').innerText;
+            const cardPriceText = card.querySelector('span').innerText;
+
+            // تحويل السعر من نص (مثل 20$) إلى رقم (20)
+            const cardPrice = parseFloat(cardPriceText.replace('$', ''));
+
+            // تحديث المجموع الإجمالي في الجافا سكريبت
+            totalAmount += cardPrice;
+
+            // تحديث نص المجموع الحالي على الشاشة
+            totalPriceElement.innerText = `:المجموع الحالي ${totalAmount}$`;
+
+            // إضافة المنتج المختار كعنصر (li) داخل القائمة (ul)
+            const listItem = document.createElement('li');
+            listItem.innerText = `${cardName} - ${cardPriceText}`;
+            cartList.appendChild(listItem);
+
+            // تأثير بصري بسيط لتأكيد الإضافة (اختياري)
+            this.innerText = "✓ تم الإضافة";
+            this.style.backgroundColor = "#4CAF50";
+            this.style.color = "white";
+            setTimeout(() => {
+                this.innerText = "اضافه سله المشتريات";
+                this.style.backgroundColor = "";
+                this.style.color = "";
+            }, 1000);
+        });
+    });
+
+    // 3. إضافة حدث الضغط لزر "اتمام المشتريات"
+    checkoutButton.addEventListener('click', function () {
+        // التحقق إذا كانت السلة فارغة
+        if (totalAmount === 0) {
+            alert("سلة المشتريات فارغة! يرجى إضافة بطاقات أولاً.");
+        } else {
+            // إظهار رسالة النجاح
+            alert(`🎉 تم الشراء بنجاح! المجموع الإجمالي: ${totalAmount}$`);
+
+            // تفريغ السلة والمجموع بعد الشراء الناجح
+            totalAmount = 0;
+            totalPriceElement.innerText = " :المجموع الحالي";
+            cartList.innerHTML = "";
+        }
+    });
+</script>
+
+</body>

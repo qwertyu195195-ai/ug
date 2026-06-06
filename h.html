@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="h.css">
+</head>
+
+<body>
+    <div class="pres">
+        <h2 class="v">المتجر تسوق المشتريات</h2>
+        <div id="voon" class="boop"></div>
+    </div>
+    <div class="card-roop">
+        <h3>🛒سله المشتريات</h3>
+        <h2 class="c"> :المجموع الحالي</h2>
+        <ul id="book" class="op">
+
+
+        </ul>
+        <button id="b" class="k" checked="">اتمام المشتريات</button>
+    </div>
+    <div class="card">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+    </div>
+    <div class="card1">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="card2">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="card3">
+        <h1>💵بطاقه ببجي</h1>
+        <span>20$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+
+
+    </div>
+    <div class="qw">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="qw2">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="qw3">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+    <div class="qw4">
+        <h1>🛍️ بطاقه سوق بلي</h1>
+        <span>30$</span>
+        <br>
+        <button class="w">اضافه سله المشتريات</button>
+
+
+    </div>
+
+</body>
+<script>
+    // 1. تحديد العناصر الأساسية من الصفحة
+    const cartList = document.getElementById('book'); // القائمة ul التي تعرض المنتجات
+    const totalPriceElement = document.querySelector('.c'); // عنوان المجموع الحالي h2
+    const checkoutButton = document.getElementById('b'); // زر إتمام المشتريات
+    const addToCartButtons = document.querySelectorAll('.w'); // جميع أزرار إضافة للسلة
+
+    let totalAmount = 0; // متغير لتخزين المجموع الإجمالي
+
+    // 2. إضافة حدث الضغط لكل أزرار "اضافه سله المشتريات"
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // الحصول على الكارت الأب للزر المكبوس
+            const card = this.parentElement;
+
+            // استخراج اسم البطاقة والسعر من الكارت
+            const cardName = card.querySelector('h1').innerText;
+            const cardPriceText = card.querySelector('span').innerText;
+
+            // تحويل السعر من نص (مثل 20$) إلى رقم (20)
+            const cardPrice = parseFloat(cardPriceText.replace('$', ''));
+
+            // تحديث المجموع الإجمالي في الجافا سكريبت
+            totalAmount += cardPrice;
+
+            // تحديث نص المجموع الحالي على الشاشة
+            totalPriceElement.innerText = `:المجموع الحالي ${totalAmount}$`;
+
+            // إضافة المنتج المختار كعنصر (li) داخل القائمة (ul)
+            const listItem = document.createElement('li');
+            listItem.innerText = `${cardName} - ${cardPriceText}`;
+            cartList.appendChild(listItem);
+
+            // تأثير بصري بسيط لتأكيد الإضافة (اختياري)
+            this.innerText = "✓ تم الإضافة";
+            this.style.backgroundColor = "#4CAF50";
+            this.style.color = "white";
+            setTimeout(() => {
+                this.innerText = "اضافه سله المشتريات";
+                this.style.backgroundColor = "";
+                this.style.color = "";
+            }, 1000);
+        });
+    });
+
+    // 3. إضافة حدث الضغط لزر "اتمام المشتريات"
+    checkoutButton.addEventListener('click', function () {
+        // التحقق إذا كانت السلة فارغةلا
+        if (totalAmount === 0) {
+            alert("سلة المشتريات فارغة! يرجى إضافة بطاقات أولاً.");
+        } else {
+            // إظهار رسالة النجاح
+            alert(`🎉 تم الشراء بنجاح! المجموع الإجمالي: ${totalAmount}$`);
+
+            // تفريغ السلة والمجموع بعد الشراء الناجح
+            totalAmount = 0;
+            totalPriceElement.innerText = " :المجموع الحالي";
+            cartList.innerHTML = "";
+        }
+    });
+</script>
+
+</body>

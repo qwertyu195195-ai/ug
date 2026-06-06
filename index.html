@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* الكود الخاص بك كما هو بدون تغيير في الألوان الأساسية */
+        .program {
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+            box-shadow: 1px 2px 3px #d6d2d2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: rgb(255, 177, 74);
+        }
+
+        .dor {
+            background: #c5c5c5;
+            background-image: url(image_3bd643a2.png);
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            /* تم تعديلها لتناسب حجم أي شاشة بدلاً من العرض الثابت */
+            height: 770px;
+            position: relative;
+        }
+
+        h2 {
+            position: static;
+            /* لضمان عدم تداخل السلة مع النصوص في الموبايل */
+            margin: 0;
+        }
+
+        .boe {
+            position: absolute;
+            bottom: 50px;
+            right: 50%;
+            transform: translateX(50%);
+            /* لتتوسط الشاشة دائماً في الموبايل واللابتوب */
+            font-size: 30px;
+            background: #000000;
+            border-radius: 10px;
+            color: azure;
+            padding: 5px 20px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .ko {
+            text-shadow: 1px 3px 5px #201e1e;
+            text-align: center;
+        }
+
+        .bn {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            padding: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .vor {
+            background: #ffffff;
+            width: 200px;
+            font-size: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff);
+            border-radius: 5px;
+            height: 300px;
+            text-shadow: 5px 5px 5px #ffffff;
+            color: #000000;
+            box-sizing: border-box;
+            transition: transform 0.4s ease;
+            box-shadow: 1px 3px 5px #c5c5c5;
+
+        }
+
+        .vor:hover {
+            transform: translateY(-10px);
+            color: #006eff;
+        }
+
+        img {
+            border-radius: 10px;
+            max-width: 100%;
+            /* لتصغير الصورة تلقائياً إذا شاشة الموبايل أصغر من 300px */
+            height: auto;
+        }
+
+        .vow {
+            text-align: center;
+            box-shadow: 1px 3px 4px #d1d1d1;
+            background: #ff0000;
+        }
+
+        button {
+            background: linear-gradient(120deg, #6beeff 0%, rgb(12, 172, 172) 100%);
+            font-size: 30px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* التوافق التام مع الموبايل عند تصفح الموقع من الهاتف */
+        @media (max-width: 768px) {
+            .program {
+                flex-direction: column-reverse;
+                /* ترتيب العناصر عمودياً للموبايل */
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 18px;
+            }
+
+            .dor {
+                height: 450px;
+                /* تقليل الارتفاع ليناسب شاشة الهاتف الطولية */
+            }
+
+            .boe {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="program">
+        <h1>Gift Card Store</h1>
+        <nav class="j">
+            <ul class="nav-links">
+                <li><a href="#" class="active">تواصل</a></li>
+
+                <li><a href="#">تخفضيات </a></li>
+
+                <li><a href="#">المتجر</a></li>
+                <li><a href="#">الرئيسيه</a></li>
+            </ul>
+        </nav>
+        <h2 class="cart-container">🛒<span id="cart-badge" class="u">0</span></h2>
+    </div>
+    <div class="dor">
+
+        <br>
+        <a href="#" class="boe">تسويق الان</a>
+    </div>
+    <h1 class="ko">بطاقات المميزة</h1>
+    <!-- هذا هو الصندوق الأب الكبير الذي يجمع الكروت -->
+    <div class="bn">
+
+        <!-- البطاقة الأولى -->
+        <div class="vor">
+            <img src="image_88f79f5f (1).png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">بطاقه ببجي</h3>
+                <span>$20.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+
+        <!-- البطاقة الثانية -->
+        <div class="vor">
+            <img src="image_9d7752c9.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">بطاقه فري فاير</h3>
+                <span>$20.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+
+        <!-- البطاقة الثالثة -->
+        <div class="vor">
+            <img src="image_2a6ee7b3.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">بطاقه روبلوكس </h3>
+                <span>$20.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+
+        <!-- البطاقة الرابعة (ستنزل للسطر الثاني تلقائياً) -->
+        <div class="vor">
+            <img src="Copilot_20260605_194642.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">رصيد اسياسيل </h3>
+                <span>$5.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+
+        <!-- البطاقة الخامسة -->
+        <div class="vor">
+            <img src="Copilot_20260605_194542.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">رصيد زين</h3>
+                <span>$8.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+
+        <div class="vor">
+            <img src="Copilot_20260605_194542.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">رصيد أوريدو</h3>
+                <span>$10.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+        <div class="vor">
+            <img src="Copilot_20260605_203011.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">بطاقه الاشتراك </h3>
+                <span>$8.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+        <div class="vor">
+            <img src="Copilot_20260605_194632.png" alt="" width="300px">
+            <div class="ao">
+                <h3 class="vow">بطاقه اوريدو </h3>
+                <span>$6.00</span>
+                <button>شراء</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        let cart = [];
+
+        const buyButtons = document.querySelectorAll('.vor button');
+        const cartIcon = document.querySelector('.cart-container');
+        const cartBadge = document.getElementById('cart-badge');
+
+        // دالة لتحديث شكل وعدد الإشعار الأحمر
+        function updateCartBadge() {
+            if (cart.length > 0) {
+                cartBadge.innerText = cart.length;
+                cartBadge.style.display = 'block'; // إظهار الإشعار الأحمر
+            } else {
+                cartBadge.style.display = 'none'; // إخفاء الإشعار إذا كانت فارغة
+            }
+        }
+
+        // عند الضغط على شراء
+        buyButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const card = e.target.closest('.vor');
+                const productName = card.querySelector('.vow').innerText;
+                const productPriceText = card.querySelector('span').innerText;
+                const productPrice = parseFloat(productPriceText.replace('$', ''));
+
+                cart.push({ name: productName, price: productPrice });
+
+                // تحديث الرقم الأحمر مباشرة
+                updateCartBadge();
+
+                alert(`تم إضافة "${productName}" إلى السلة بنجاح!`);
+            });
+        });
+
+        // عند الضغط على السلة لعرض الفاتورة
+        cartIcon.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("سلتك فارغة حالياً. ابدأ بالتسوق الآن!");
+                return;
+            }
+
+            let invoiceText = "🛒 تفاصيل سلة المشتريات:\n\n";
+            let totalSum = 0;
+
+            cart.forEach((item, index) => {
+                invoiceText += `${index + 1}. ${item.name} - $${item.price.toFixed(2)}\n`;
+                totalSum += item.price;
+            });
+
+            invoiceText += `\n-----------------------\n💰 المجموع الكلي: $${totalSum.toFixed(2)}`;
+
+            alert(invoiceText);
+        });
+    </script>
+
+</body>
+
+</html>

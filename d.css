@@ -1,0 +1,131 @@
+/* إعدادات عامة لتهيئة الصفحة */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    padding: 10px;
+    background-color: #f5f5f5;
+    /* دعم القراءة من اليمين لليسار تلقائياً */
+    direction: rtl;
+}
+
+/* تطبيق التأثير على الصفحة بالكامل عند الدخول */
+.pres {
+    background: linear-gradient(135deg, rgb(77, 68, 68) 30%, #94908e 100%);
+    border-radius: 10px;
+    min-height: 100px;
+    padding: 20px;
+    text-align: center;
+    color: aliceblue;
+    font-size: 20px;
+    border-style: double;
+    margin-bottom: 20px;
+}
+
+.v {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-roop {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    font-size: 24px;
+    margin: 10px auto;
+    border-style: double;
+    color: rgb(0, 0, 0);
+}
+
+button {
+    background: #f39f04;
+    border-radius: 3px;
+    border-style: double;
+    width: 100%;
+    max-width: 400px;
+    font-size: 24px;
+    color: rgb(0, 136, 255);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    display: block;
+    margin: 10px auto;
+}
+
+.c {
+    text-align: right;
+    text-shadow: 1px 3px 5px #ff0000;
+    border-style: groove;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* 🌟 الحاوية الرئيسية للكروت لترتيبها تلقائياً */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+/* 🌟 تم توحيد كود الكروت وإزالة الأبعاد الثابتة */
+.card,
+.card1,
+.card2,
+.card3,
+.qw,
+.qw2,
+.qw3,
+.qw4 {
+    background: #ebebeb;
+    border-style: double;
+    text-align: center;
+    width: 100%;
+    /* تأخذ كامل مساحة الحاوية المتاحة لها */
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    /* تم حذف position: absolute و top و right لضمان عدم التداخل */
+}
+
+/* تأثير التحويم */
+.card:hover,
+.card1:hover,
+.card2:hover,
+.card3:hover,
+.qw:hover,
+.qw2:hover,
+.qw3:hover,
+.qw4:hover {
+    transform: translateY(-10px);
+}
+
+.w {
+    background: #ffb895;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* 📱 تعديلات خاصة بالشاشات الصغيرة جداً (الموبايل) */
+@media (max-width: 480px) {
+    .pres {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 20px;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        /* كارت واحد في كل سطر للموبايل */
+    }
+}

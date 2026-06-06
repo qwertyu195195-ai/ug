@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #372f3a 0%, #493d4b 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* 🌟 أساسي: يسمح للكروت بالنزول تحت بعضها في الموبايل */
+    min-height: 100vh;
+    /* يضمن تغطية كامل طول الشاشة */
+    padding: 20px;
+    direction: rtl;
+    /* دعم القراءة العربية */
+}
+
+.mo {
+    background: #ffa600;
+    border-radius: 10px;
+    box-shadow: 1px 3px 5px #faede8;
+    width: 100%;
+    /* مرن يأخذ المساحة المتاحة */
+    max-width: 320px;
+    /* 🌟 أقصى عرض للكارت لكي لا يتشوه على اللابتوب */
+    padding: 25px;
+    margin: 15px;
+    /* مسافة أمان بين الكروت عند النزول لسطر جديد */
+}
+
+h1 {
+    text-align: center;
+    text-shadow: 1px 3px 5px #d6d6d6;
+    border: #faede8;
+    font-size: 24px;
+    /* حجم خط متناسق */
+    margin-bottom: 15px;
+}
+
+a {
+    text-shadow: 1px 2px #493d4b;
+    border-radius: 10px;
+    /* تم تصحيح الخطأ الإملائي 10p */
+    text-decoration: none;
+    font-size: 24px;
+    /* تم تصغيره قليلاً ليناسب شاشات الموبايل الصغيرة */
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background: #d6d6d6;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+/* 🌟 تم دمج خصائص شريط التحميل المتكررة لكود أنظف وأسرع */
+.progress-fillbar-1,
+.progress-fillbar-2,
+.progress-fillbar-3,
+.progress-fillbar-4 {
+    background: linear-gradient(135deg, #124d40 0%, #098671 100%);
+    border-radius: 10px;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* تطبيق الحركات بأوقاتها المختلفة */
+.progress-fillbar-1 {
+    animation: slowload 10s forwards;
+}
+
+.progress-fillbar-2 {
+    animation: slowload 23s forwards;
+}
+
+.progress-fillbar-3 {
+    animation: slowload 33s forwards;
+}
+
+.progress-fillbar-4 {
+    animation: slowload 39s forwards;
+}
+
+/* 🌟 تم توحيد الـ Keyframe في حركة واحدة لأنها تملك نفس البداية والنهاية */
+@keyframes slowload {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* 📱 تعديل إضافي للموبايلات ذات الشاشات الصغيرة جداً */
+@media (max-width: 360px) {
+    .mo {
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    a {
+        font-size: 20px;
+    }
+}

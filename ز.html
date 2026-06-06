@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>عجلة الحظ - الهدايا</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background: #222;
+            color: #fff;
+            padding-top: 50px;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        /* رسم العجلة بشكل مبسط */
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            background: conic-gradient(#ff4757 0% 25%, #2ed573 25% 50%, #1e90ff 50% 75%, #ffa502 75% 100%);
+            transition: transform 4s ease-out;
+        }
+
+        /* السهم المؤشر */
+        .pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #fff;
+            z-index: 10;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 10px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            background: #2ed573;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🎉 لِف العجلة واربح بطاقتك أو هدية خصم! 🎉</h2>
+
+    <div class="wheel-container">
+        <div class="pointer"></div>
+        <div class="wheel" id="wheel"></div>
+    </div>
+
+    <button onclick="spinWheel()">إبرام العجلة!</button>
+
+    <script>
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            // توليد درجة تدوير عشوائية كبيرة لتلف العجلة عدة مرات
+            const randomDegree = Math.floor(Math.random() * 360) + 1800;
+            wheel.style.transform = `rotate(${randomDegree}deg)`;
+
+            // قائمة بالهدايا حسب الزاوية
+            const prizes = ["خصم 10%", "بطاقة ببجي مجانية!", "حظاً أوفر", "خصم 5%"];
+
+            // إظهار النتيجة بعد انتهاء الحركة (4 ثواني)
+            setTimeout(() => {
+                // الحسبة الفعلية تعتمد على باقي قسمة الزاوية لمعرفة أين وقف السهم
+                const actualDegree = randomDegree % 360;
+                let prizeIndex = Math.floor(actualDegree / 90);
+
+                alert(`🎁 مبروك! فزت بـ: ${prizes[prizeIndex] || "هدية مميزة"}`);
+            }, 4000);
+        }
+    </script>
+
+</body>
+
+</html>

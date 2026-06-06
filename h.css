@@ -1,0 +1,112 @@
+.program {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    box-shadow: 1px 2px 3px #d6d2d2;
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    position: absolute;
+    top: 30px;
+    right: 400px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(255, 177, 74);
+}
+
+.dor {
+    background: #c5c5c5;
+    background-image: url(image_3bd643a2.png);
+    width: 1332px;
+    height: 770px;
+}
+
+h2 {
+    position: absolute;
+    top: 2px;
+    right: 20px;
+}
+
+.boe {
+    position: absolute;
+    top: 600px;
+    right: 1000px;
+    font-size: 30px;
+    background: #000000;
+    border-radius: 10px;
+    color: azure;
+}
+
+.ko {
+    text-shadow: 1px 3px 5px #201e1e;
+    text-align: center;
+}
+
+
+
+.bn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    /* مسافة فاصلة ممتازة ومريحة بين الكروت */
+    flex-wrap: wrap;
+    /* تضمن الانتقال التلقائي للسطر الثاني (3 كروت بالسطر الأول، و3 بالثاني) */
+    padding: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.vor {
+    background: #ffffff;
+    width: 310px;
+    /* تم تصحيح الخطأ المطبعي وضبط الحجم ليتسع السطر لـ 3 كروت بالضبط في الشاشات الكبيرة */
+    font-size: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff);
+    border-radius: 5px;
+    height: 300px;
+    text-shadow: 5px 5px 5px #ffffff;
+    color: #000000;
+    box-sizing: border-box;
+    transition: transform 0.4s ease;
+
+    /* يضمن بقاء الحجم ثابتاً ومستقراً */
+
+}
+
+.vor:hover {
+    transform: translateY(-10px);
+}
+
+
+
+img {
+    border-radius: 10px;
+
+}
+
+.vow {
+    text-align: center;
+}
+
+button {
+    background: linear-gradient(120deg, #6beeff 0%, rgb(12, 172, 172) 100%);
+    font-size: 30px;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+}
