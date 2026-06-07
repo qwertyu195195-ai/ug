@@ -125,21 +125,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-between
     }
 
     .bn:hover {
         transform: translateY(-3px);
-        box-shadow: 0px 4px 8px #05eeff;
+        box-shadow: 0px 4px 8px #ffffff;
     }
 
     /* جعل الصور تنكمش وتكبر حسب حجم شاشة الهاتف تلقائياً */
     .bn img {
         max-width: 100%;
         height: auto;
-        max-height: 65px;
         object-fit: contain;
-        border-radius: 6px;
+        border-radius: 10px;
     }
 
     /* خلفية اسم البطاقة أسفل الصورة */
@@ -279,18 +278,79 @@
             <img src="تنزيل4.png" alt="شي ان">
             <div class="uuuu">بطاقة شي ان</div>
         </div>
-    </div>
 
-    <!-- النافذة المنبثقة التي تظهر عند الضغط -->
-    <div id="purchaseModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <h3 id="modalTitle" style="text-align: center; margin: 0 0 15px 0;">اسم البطاقة</h3>
-            <p style="text-align: center; color: #666; font-size: 14px;">اختر الفئة والسعر:</p>
-            <select id="priceSelect" class="price-select"></select>
-            <button id="buyButton" class="buy-btn">شراء الآن</button>
+    </div>
+    <br>
+    <div class="border1">
+        <div>
+            1️⃣تم توفير بطاقه شحن ببجي شدات (600) 2️⃣بسعر مناسب واحصل عل خصم 50%
+
         </div>
     </div>
+    <br>
+    <div class="news-ticker">
+        <div class="ticker-text">
+            ⚡ تم توفر كروت آسيا سيل فئة 5 و
+            <br>
+
+            10 • تسليم فوري وآمن عبر الواتساب فوراُ ⚡
+
+        </div>
+    </div>
+
+
+    <style>
+        .border1 {
+            background: #e26715;
+            border-radius: 10px;
+            box-shadow: 2px 3px 5px #141414;
+            border-style: double;
+            border-width: 2px;
+            border: 2px solid #ff0000;
+            width: 100%;
+            transition: transform 0.3s ease;
+            color: #fff;
+            font-weight: bold;
+
+        }
+
+        .border1:hover {
+            transform: translateY(-10px);
+            box-shadow: 1px 3px 5px #ff0000;
+        }
+
+
+
+        .border2 {
+            color: lightgoldenrodyellow;
+            max-width: 100%;
+            font-size: 15px;
+        }
+
+        .news-ticker {
+            background: #e26715;
+            border-radius: 10px;
+            box-shadow: 2px 3px 5px #141414;
+            border-style: double;
+            border-width: 2px;
+            border: 2px solid #ff0000;
+            width: 100%;
+            transition: transform 0.3s ease;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .news-ticker:hover {
+            transform: translateY(-10px);
+            box-shadow: 1px 3px 4px #ff0000;
+        }
+    </style>
+
+
+    <style>
+
+    </style>
+
 
     <!-- كود التشغيل والربط تلقائياً بالواتساب -->
     <script>
