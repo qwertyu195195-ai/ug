@@ -126,6 +126,7 @@
         position: absolute;
         top: 1px;
         right: 2px;
+        cursor: pointer;
     }
 
     .r {
@@ -253,7 +254,7 @@
     <div class="io">
         <h2 class="q">👤</h2>
         <h3 class="r">الأزياء</h3>
-        <h2 class="w">🛒</h2>
+        <h2 class="w"> 🛒</h2>
     </div>
 
     <!-- صندوق البحث -->
@@ -310,6 +311,9 @@
                 <span>24.000 د.ع</span>
                 <br>
                 <button>شراء</button>
+                <style>
+
+                </style>
             </div>
 
             <!-- الكرت الثاني (يصعد ويستقر بصف الأول فوراً) -->
@@ -353,10 +357,90 @@
 
 
         </div>
+
     </div>
 
 
 
 </body>
+<script>
+    // عدد المنتجات + المجموع الكلي
+    let cartCount = 0;
+    let totalPrice = 0;
+
+    // تحديد كل أزرار الشراء
+    const buyButtons = document.querySelectorAll("button");
+
+    // أيقونة السلة
+    const cartIcon = document.querySelector(".w");
+
+    // إنشاء عداد صغير بجانب السلة
+    const counter = document.createElement("span");
+    counter.style.position = "absolute";
+    counter.style.top = "0";
+    counter.style.right = "25px";
+    counter.style.background = "red";
+    counter.style.color = "white";
+    counter.style.borderRadius = "50%";
+    counter.style.padding = "2px 6px";
+    counter.style.fontSize = "14px";
+    counter.textContent = cartCount;
+    document.querySelector(".io").appendChild(counter);
+
+    // عند الضغط على زر شراء
+    buyButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            cartCount++;
+            totalPrice += 24000; // سعر القميص الواحد
+            counter.textContent = cartCount;
+        });
+    });
+
+    // إنشاء صندوق منبثق للسلة
+    const cartBox = document.createElement("div");
+    cartBox.style.position = "fixed";
+    cartBox.style.top = "50%";
+    cartBox.style.left = "50%";
+    cartBox.style.transform = "translate(-50%, -50%)";
+    cartBox.style.background = "#fff";
+    cartBox.style.padding = "20px";
+    cartBox.style.borderRadius = "10px";
+    cartBox.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+    cartBox.style.display = "none";
+    cartBox.style.textAlign = "center";
+    document.body.appendChild(cartBox);
+
+    const cartText = document.createElement("p");
+    cartBox.appendChild(cartText);
+
+    const confirmBtn = document.createElement("button");
+    confirmBtn.textContent = "تم شراء ✅";
+    confirmBtn.style.marginTop = "10px";
+    confirmBtn.style.background = "green";
+    confirmBtn.style.color = "white";
+    confirmBtn.style.padding = "5px 10px";
+    confirmBtn.style.borderRadius = "5px";
+    cartBox.appendChild(confirmBtn);
+
+    // عند الضغط على السلة
+    cartIcon.addEventListener("click", () => {
+        if (cartCount > 0) {
+            cartText.textContent = "عدد المنتجات: " + cartCount + " | المجموع: " + totalPrice + " د.ع";
+            cartBox.style.display = "block";
+        } else {
+            alert("السلة فارغة 🛒");
+        }
+    });
+
+    // عند الضغط على زر تم شراء
+    confirmBtn.addEventListener("click", () => {
+        alert("تم شراء " + cartCount + " منتجات بمجموع " + totalPrice + " د.ع 🎉");
+        cartBox.style.display = "none";
+        cartCount = 0;
+        totalPrice = 0;
+        counter.textContent = cartCount;
+    });
+</script>
+
 
 </html>
