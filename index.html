@@ -1,387 +1,362 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر البطاقات الرقمية</title>
-    <!-- استدعاء خط كايرو الاحترافي المتوافق مع الهواتف -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
 </head>
-
 <style>
-    /* إعدادات تمنع خروج العناصر وتضمن ثبات الصفحة */
-    * {
-        box-sizing: border-box;
-    }
-
     body {
-        background: #c5c5c5;
-        font-family: 'Cairo', sans-serif;
-        margin: 0;
-        padding: 12px;
-        direction: rtl;
-        /* توجيه العناصر من اليمين لليسار */
+        background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
+
+
         overflow-x: hidden;
-        /* إخفاء شريط التمرير الجانبي البشع */
+        /* يقطع أي عنصر يحاول الخروج عن حافة الموبايل يميناً أو يساراً */
+
+
     }
 
-    /* الهيدر العلوي البنفسجي */
-    .qqq {
-        background: #844edb;
-        width: 100%;
-        padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        color: #fff;
-        position: relative;
+    /* تخصيص شريط التمرير */
+    ::-webkit-scrollbar {
+        height: 6px;
+        /* ارتفاع الشريط الأفقي */
     }
 
-    .eee {
-        font-size: 20px;
-        margin: 5px 0 0 0;
+    ::-webkit-scrollbar-track {
+        background: linear-gradient(135deg, #c0c0c0, #d9d9d9);
+        /* خلفية المسار */
     }
 
-    .rrr {
-        font-size: 16px;
-        margin: 0 0 10px 0;
-        opacity: 0.9;
-    }
-
-    /* شريط التنقل البنفسجي الفاتح المتجاوب */
-    .car-card {
-        width: 100%;
-        max-width: 350px;
-        background: #c456f0;
-        border-radius: 6px;
-        padding: 6px 10px;
-        display: flex;
-        justify-content: space-around;
-        list-style: none;
-        margin: 10px 0 0 0;
-    }
-
-    .car-card a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        font-size: 14px;
-        transition: color 0.2s;
-    }
-
-    .car-card a:hover {
-        color: #ff7b00;
-    }
-
-    /* أيقونة السلة الثابتة يسار الهيدر بشكل صحيح */
-    .iii {
-        font-size: 20px;
-        background: #fff;
-        border: 2px solid #000;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        cursor: pointer;
-    }
-
-    h3 {
-        text-align: right;
-        margin: 20px 5px 10px 0;
-        color: #111;
-        font-size: 18px;
-    }
-
-    /* شبكة الكروت السحرية المقسمة لـ 3 أعمدة متساوية تلقائياً */
-    .pppp {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        /* تمنع الكروت من التداخل والخروج */
-        gap: 10px;
-        width: 100%;
-        padding: 0;
-    }
-
-    /* تصميم الكارت المرن */
-    .bn {
-        background: #ffffff00;
-        border-radius: 12px;
-        padding: 8px;
-        text-align: center;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between
-    }
-
-    .bn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0px 4px 8px #ffffff;
-    }
-
-    /* جعل الصور تنكمش وتكبر حسب حجم شاشة الهاتف تلقائياً */
-    .bn img {
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
+        /* لون المقبض */
         border-radius: 10px;
     }
 
-    /* خلفية اسم البطاقة أسفل الصورة */
-    .uuuu {
-        background: #a0a0a0;
-        color: #fff;
-        border-radius: 6px;
-        text-align: center;
-        width: 100%;
-        font-size: 12px;
-        margin: 8px 0 0 0;
-        padding: 4px 0;
-        font-weight: bold;
-        box-shadow: none;
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
+        /* لون عند المرور عليه */
     }
 
-    /* تصميم النافذة المنبثقة للطلب */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background-color: #fff;
-        padding: 25px;
-        border-radius: 15px;
-        width: 85%;
-        max-width: 320px;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* الحاوية الخارجية المحددة لأبعاد البنر الإعلاني */
+    .slider-container {
         position: relative;
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        left: 15px;
-        font-size: 24px;
-        cursor: pointer;
-        color: #aaa;
-    }
-
-    .close-btn:hover {
-        color: #000;
-    }
-
-    .price-select {
         width: 100%;
-        padding: 10px;
+        max-width: 100%;
         margin: 15px 0;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-        font-family: 'Cairo', sans-serif;
+        overflow: hidden;
+
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    .buy-btn {
-        background-color: #28a745;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        font-size: 16px;
-        border-radius: 8px;
-        cursor: pointer;
+    /* سكة التمرير الأفقي السلس التي تسمح بالسحب بالإصبع */
+    .slider-wrapper {
+        display: flex;
+        overflow-x: auto;
+        /* تفعيل التمرير الأفقي */
+        scroll-snap-type: x mandatory;
+        /* إجبار الصورة على الاستقرار بالمنتصف عند السحب */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        /* سحب فائق النعومة لهواتف الآيفون */
+    }
+
+    /* إخفاء شريط التمرير الرمادي البشع لتبدو كأنها تطبيق حقيقي */
+    .slider-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* ضبط مقاسات كل صورة (Slide) لتأخذ كامل عرض الشاشة المتاحة */
+    .slide {
+        min-width: 100%;
         width: 100%;
+        scroll-snap-align: start;
+        /* نقطة وقوف الصورة وتثبيتها */
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+        max-height: 160px;
+        /* تحديد الارتفاع ليتطابق مع قياس صورتك المرفقة */
+        object-fit: cover;
+        display: block;
+    }
+
+    /* حاوية النقاط السفليّة وتوسيطها */
+    .slider-dots {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        /* وضع النقاط في المنتصف تماماً */
+        display: flex;
+        gap: 6px;
+        direction: ltr;
+        /* ترتيب النقاط من اليسار لليمين */
+    }
+
+    /* تصميم النقاط الدائرية البيضاء الخافتة */
+    .dot {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    /* النقطة النشطة السوداء العريضة تماماً كالصورة المرفقة */
+    .dot.active {
+        background-color: #000000;
+        /* لون أسود */
+        width: 20px;
+        /* جعلها مستطيلة ونشطة */
+        border-radius: 4px;
+    }
+
+    .q {
+        position: absolute;
+        top: 1px;
+        font-size: 22px;
+    }
+
+    .w {
+        position: absolute;
+        top: 1px;
+        right: 2px;
+    }
+
+    .r {
+        text-align: center;
+        position: absolute;
+        top: 1;
+        right: 160px;
+        font-size: 22px;
+    }
+
+    input {
+        position: absolute;
+        top: 60px;
+        width: 95%;
+        height: 40px;
+        background: #c9c9c96e;
+        border-radius: 10px;
+        border: none;
+        text-align: right;
+        font-size: 20px;
+    }
+
+    .op {
+        position: absolute;
+        top: 110px;
+
+    }
+
+    .op img {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* 1. الصندوق الأب المحيط بالكروت لترتيبها بالعرض (بصف بعض) */
+    .nm {
+        display: grid;
+        gap: 60px;
+        grid-template-columns: repeat(2, 3fr);
+        padding: 10px;
+        box-sizing: border-box;
+        direction: rtl;
+        /* توجيه الترتيب بانتظام من اليمين لليسار */
+    }
+
+    /* 2. تنسيق الكارت الفردي المتجاوب ليتوافق مع كل شاشات الموبايل */
+    .jk {
+
+        border-radius: 10px;
+        border: none;
+        /* إطارك البرتقالي الأصلي */
+
+        text-align: center;
+
+
+        transition: transform 0.3s ease;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+
+
+        /* قمنا بحذف الـ width الثابت والـ 100% المتعارضين، ليأخذ الكارت مقاسه التلقائي من الأب */
+    }
+
+
+
+
+
+
+
+
+
+    .jk img,
+    .ppp {
+        width: 100%;
+        height: 160px;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;
+        /* ✅ الخاصية السحرية لدمج وإخفاء ألوان خلفيات الصور المختلفة */
+        mix-blend-mode: multiply;
+        padding: 10px;
+
+    }
+
+
+
+
+
+
+    span {
+        color: rgb(0, 0, 0);
+        font-size: 20px;
         font-weight: bold;
-        font-family: 'Cairo', sans-serif;
+    }
+
+    button {
+        border: none;
+        font-size: 30px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #ff0606;
+        cursor: pointer;
+
+    }
+
+
+
+
+    /* تجبر الأزرار على التباعد والتوزع بالتساوي */
+
+
+
+
+
+
+    .pppp {
+        font-size: 20px;
     }
 </style>
 
 <body>
+    <!-- الهيدر العلوي المتجاوب -->
+    <div class="io">
+        <h2 class="q">👤</h2>
+        <h3 class="r">الأزياء</h3>
+        <h2 class="w">🛒</h2>
+    </div>
 
-    <!-- الهيدر تم تصحيح هيكلته بالكامل هنا -->
-    <div class="qqq">
-        <div class="iii">🛒</div>
-        <h2 class="eee">المتجر رصيد</h2>
-        <h2 class="rrr">والبطاقات العاب</h2>
+    <!-- صندوق البحث -->
+    <div>
+        <input type="text" placeholder="ابحث عن ملابس..." name="" id="">
+    </div>
 
-        <div class="car-card">
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">المتجر</a></li>
-            <li><a href="#">تواصل</a></li>
+    <!-- الحاوية الأساسية للمنتجات -->
+    <div class="op">
+
+        <!-- البنر الإعلاني: قمنا بحذف الـ 365px الثابتة لكي يستوي ويتوافق تلقائياً مع عرض الموبايل -->
+        <img src="Copilot_20260608_142958.png" alt="بنر العرض"
+            style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+
+        <!-- صندوق الشبكة (الأب) الذي سيجبر الكروت على الاص
+         طفاف بالعرض -->
+
+        <style>
+            .as {
+                display: flex;
+                gap: 33px;
+                max-width: 100%;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+
+            }
+
+            .as a {
+                text-decoration: none;
+                background: #d1d1d1cc;
+                height: 25px;
+                border-radius: 10px;
+                width: 150px;
+                font-weight: bold;
+                color: #0000009d;
+                font-style: inherit;
+            }
+        </style>
+        <div class="as">
+            <a href="">بنطلونات</a>
+            <a href="">قميصات</a>
+            <a href="">السترات</a>
+            <a href="">التيشيرتات</a>
+        </div>
+        <br>
+        <div class="nm">
+
+
+            <!-- الكرت الأول (منفصل ومغلق بشكل صحيح) -->
+            <div class="jk">
+                <img src="7.webp" alt="قميص رجالي" class="ppp" width="">
+                <h3>قميص رجالي</h3>
+                <span>24.000 د.ع</span>
+                <br>
+                <button>شراء</button>
+            </div>
+
+            <!-- الكرت الثاني (يصعد ويستقر بصف الأول فوراً) -->
+            <div class=" jk">
+                <img src="8.jpg" alt="قميص رجالي" class="ppp">
+                <h3>قميص رجالي</h3>
+                <span>24.000 د.ع</span>
+                <br>
+                <button>شراء</button>
+            </div>
+            <!-- الكرت الثاني (يصعد ويستقر بصف الأول فوراً) -->
+            <div class=" jk">
+                <img src="9.jfif" alt="قميص رجالي" class="ppp">
+                <h3>قميص رجالي</h3>
+                <span>24.000 د.ع</span>
+                <br>
+                <button>شراء</button>
+            </div>
+            <div class=" jk">
+                <img src="12.webp" alt="قميص رجالي" class="ppp">
+                <h3>قميص رجالي</h3>
+                <span>24.000 د.ع</span>
+                <br>
+                <button>شراء</button>
+            </div>
+            <div class=" jk">
+                <img src="11.jfif" alt="قميص رجالي" class="ppp">
+                <h3>قميص رجالي</h3>
+                <span>24.000 د.ع</span>
+                <br>
+                <button>شراء</button>
+            </div>
+
+            <div class=" jk">
+                <img src="13.jfif" alt="قميص رجالي" class="ppp">
+                <h3>قميص رجالي</h3>
+                <span>24.000 د.ع</span>
+                <br>
+                <button>شراء</button>
+            </div>
+
+
         </div>
     </div>
 
-    <h3>بطاقات رصيد</h3>
-    <div class="pppp">
-        <div class="bn" onclick="openModal('زين كاش', ['٥,٠٠٠ دينار', '١٠,٠٠٠ دينار'])">
-            <img src="Copilot_20260605_194542.png" alt="زين كاش">
-            <div class="uuuu">زين كاش</div>
-        </div>
-        <div class="bn" onclick="openModal('اسيا سيل', ['كارت ٥ آسيا', 'كارت ١٠ آسيا'])">
-            <img src="Copilot_20260605_194642.png" alt="اسيا سيل">
-            <div class="uuuu">اسيا سيل</div>
-        </div>
-        <div class="bn" onclick="openModal('أوريدو', ['٥,٠٠٠ رصيد', '١٠,٠٠٠ رصيد'])">
-            <img src="Copilot_20260605_194632.png" alt="أوريدو">
-            <div class="uuuu">أوريدو</div>
-        </div>
-    </div>
-
-    <h3>بطاقات العاب</h3>
-    <div class="pppp">
-        <div class="bn" onclick="openModal('بطاقة ببجي', ['60 شدة', '325 شدة'])">
-            <img src="image_88f79f5f.png" alt="ببجي">
-            <div class="uuuu">بطاقة ببجي</div>
-        </div>
-        <div class="bn" onclick="openModal('بطاقة فري فاير', ['100 جوهرة', '210 جوهرة'])">
-            <img src="image_2a6ee7b3.png" alt="فري فاير">
-            <div class="uuuu">بطاقة فري فاير</div>
-        </div>
-        <div class="bn" onclick="openModal('بطاقة روبلوكس', ['800 Robux', '1700 Robux'])">
-            <img src="تنزيل.jfif" alt="روبلوكس">
-            <div class="uuuu">بطاقة روبلوكس</div>
-        </div>
-    </div>
-
-    <h3>بطاقات التسويق الرقمية</h3>
-    <div class="pppp">
-        <div class="bn" onclick="openModal('بطاقة انون', ['10$ نون', '20$ نون'])">
-            <img src="تنزيل1.png" alt="انون">
-            <div class="uuuu">بطاقة انون</div>
-        </div>
-        <div class="bn" onclick="openModal('بطاقة امازون', ['5$ أمازون', '10$ أمازون'])">
-            <img src="تنزيل3.png" alt="امازون">
-            <div class="uuuu">بطاقة امازون</div>
-        </div>
-        <div class="bn" onclick="openModal('بطاقة شي ان', ['25$ شي ان', '50$ شي ان'])">
-            <img src="تنزيل4.png" alt="شي ان">
-            <div class="uuuu">بطاقة شي ان</div>
-        </div>
-
-    </div>
-    <br>
-    <div class="border1">
-        <div>
-            1️⃣تم توفير بطاقه شحن ببجي شدات (600) 2️⃣بسعر مناسب واحصل عل خصم 50%
-
-        </div>
-    </div>
-    <br>
-    <div class="news-ticker">
-        <div class="ticker-text">
-            ⚡ تم توفر كروت آسيا سيل فئة 5 و
-            <br>
-
-            10 • تسليم فوري وآمن عبر الواتساب فوراُ ⚡
-
-        </div>
-    </div>
 
 
-    <style>
-        .border1 {
-            background: #e26715;
-            border-radius: 10px;
-            box-shadow: 2px 3px 5px #141414;
-            border-style: double;
-            border-width: 2px;
-            border: 2px solid #ff0000;
-            width: 100%;
-            transition: transform 0.3s ease;
-            color: #fff;
-            font-weight: bold;
-
-        }
-
-        .border1:hover {
-            transform: translateY(-10px);
-            box-shadow: 1px 3px 5px #ff0000;
-        }
-
-
-
-        .border2 {
-            color: lightgoldenrodyellow;
-            max-width: 100%;
-            font-size: 15px;
-        }
-
-        .news-ticker {
-            background: #e26715;
-            border-radius: 10px;
-            box-shadow: 2px 3px 5px #141414;
-            border-style: double;
-            border-width: 2px;
-            border: 2px solid #ff0000;
-            width: 100%;
-            transition: transform 0.3s ease;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .news-ticker:hover {
-            transform: translateY(-10px);
-            box-shadow: 1px 3px 4px #ff0000;
-        }
-    </style>
-
-
-    <style>
-
-    </style>
-
-
-    <!-- كود التشغيل والربط تلقائياً بالواتساب -->
-    <script>
-        const modal = document.getElementById('purchaseModal');
-        const closeModalBtn = document.getElementById('closeModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const priceSelect = document.getElementById('priceSelect');
-        const buyButton = document.getElementById('buyButton');
-
-        function openModal(cardName, options) {
-            modalTitle.innerText = cardName;
-            priceSelect.innerHTML = '';
-            options.forEach(option => {
-                let opt = document.createElement('option');
-                opt.value = option;
-                opt.innerText = option;
-                priceSelect.appendChild(opt);
-            });
-            modal.style.display = 'flex';
-        }
-
-        closeModalBtn.onclick = function () { modal.style.display = 'none'; }
-        window.onclick = function (e) { if (e.target == modal) { modal.style.display = 'none'; } }
-
-        buyButton.onclick = function () {
-            const phoneNumber = "9647700000000"; // يرجى تغيير هذا الرقم لرقم واتساب متجرك
-            const msg = `مرحباً، أود شراء: ${modalTitle.innerText} - الفئة: ${priceSelect.value}`;
-            window.open(`https://wa.me{phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-            modal.style.display = 'none';
-        }
-    </script>
 </body>
 
 </html>
