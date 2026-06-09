@@ -174,5 +174,30 @@
     </div>
 
 </body>
+<script>
+    // متغير لحفظ عدد المنتجات المشتراة
+    let totalItems = 0;
+
+    // تحديد عناصر الصفحة برمجياً
+    const badge = document.getElementById('cartCount');
+    const buyButtons = document.querySelectorAll('.ppo');
+
+    // إضافة حدث الضغط لكل زر شراء موجود في المتجر
+    buyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 1. زيادة العداد بمقدار 1
+            totalItems++;
+
+            // 2. تحديث الرقم الظاهر فوق السلة
+            badge.innerText = totalItems;
+
+            // 3. إظهار دائرة العداد الحمراء إذا كانت مخفية
+            badge.style.display = 'block';
+
+            // 4. إظهار رسالة تأكيد الشراء للمستخدم
+            alert('تم الشراء بنجاح!');
+        });
+    });
+</script>
 
 </html>
