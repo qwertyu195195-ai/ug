@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الأزياء</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: sans-serif;
+            padding: 10px;
+        }
+
+        /* الهيدر العلوي بشكل مرن ومتناسق */
+        .io {
+            background: linear-gradient(140deg, rgba(70, 129, 119, 0.856) 0%, rgba(14, 131, 111, 0.467) 100%);
+            width: 100%;
+            height: 60px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+        }
+
+        .io h2 {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .io h3 {
+            font-size: 20px;
+        }
+
+        /* البانر الإعلاني الكبير */
+        .moo {
+            border-radius: 10px;
+            border: 2px solid rgb(0, 133, 250);
+            width: 100%;
+            overflow: hidden;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .moo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* شبكة المنتجات - مرنة ومقسمة لعمودين بالتساوي */
+        /* حاوية المنتجات (الشبكة) */
+        /* أبعاد حاوية الكروت */
+        .vv {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 100%;
+            height: auto;
+            /* تم إلغاء الـ 120px حتى لا تتداخل الكروت */
+        }
+
+        /* أبعاد الكارت الواحد */
+        .pp {
+            width: 100%;
+            /* يلغي الـ 170pxpx المكتوبة غلط */
+            height: auto;
+            padding: 10px;
+        }
+
+        /* أبعاد الصورة داخل الكارت */
+        .pp img {
+            width: 100%;
+            height: 150px;
+            /* ارتفاع ثابت وموحد لجميع الصور */
+            object-fit: cover;
+            /* يمنع تمطط أو تشوه الصورة */
+            border-radius: 10px;
+        }
+
+        /* أبعاد نصوص وعناصر الكارت */
+        .qqw {
+            font-size: 15px;
+            margin: 8px 0;
+        }
+
+        .qqe {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: rgb(255, 123, 0);
+        }
+
+        .ppo {
+            font-size: 100px;
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            font-size: 10px;
+            background: #acacac;
+            font-weight: bold;
+            color: #e20f0f;
+            border-radius: 10px;
+
+
+            /* مساحة ضغط مريحة للإصبع */
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 40px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- الهيدر -->
+    <div class="io">
+        <h2>👤</h2>
+        <h3>الأزياء</h3>
+        <h2>🛒</h2>
+
+    </div>
+    <a href="s.html">⬅</a>
+
+    <!-- البانر العلوي -->
+    <div class="moo">
+        <img src="image_ebe01b09.png" alt="بانر إعلاني">
+    </div>
+
+    <!-- شبكة المنتجات -->
+    <div class="vv">
+        <div class="pp">
+            <img src="الت1.jfif" alt="تيشيرت رجالي">
+            <h3 class="qqw">تشيرت رجالي</h3>
+            <span class="qqe">20.000 </span>
+            <br>
+            <button class="ppo">شراء</button>
+        </div>
+
+        <div class="pp">
+            <img src="الت2.jfif" alt="تيشيرت رجالي">
+            <h3 class="qqw">تشيرت رجالي</h3>
+            <span class="qqe">25.000 </span>
+            <br>
+            <button class="ppo">شراء</button>
+        </div>
+
+        <div class="pp">
+            <img src="الت3.jfif" alt="تيشيرت رجالي">
+            <h3 class="qqw">تشيرت رجالي</h3>
+            <span class="qqe">18.000 </span>
+            <br>
+            <button class="ppo">شراء</button>
+        </div>
+
+        <div class="pp">
+            <img src="الت4.png" alt="تيشيرت رجالي">
+            <h3 class="qqw">تشيرت رجالي</h3>
+            <span class="qqe">30.000 </span>
+            <br>
+            <button class="ppo">شراء</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
