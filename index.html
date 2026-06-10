@@ -2,496 +2,246 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
-<body>
-
-</body>
-
-</html>
-
-</head>
 <style>
-    body {
-        background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
-
-
-        overflow-x: hidden;
-        /* يقطع أي عنصر يحاول الخروج عن حافة الموبايل يميناً أو يساراً */
-
-
-    }
-
-    /* تخصيص شريط التمرير */
-    ::-webkit-scrollbar {
-        height: 6px;
-        /* ارتفاع الشريط الأفقي */
-    }
-
-    ::-webkit-scrollbar-track {
-        background: linear-gradient(135deg, #c0c0c0, #d9d9d9);
-        /* خلفية المسار */
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
-        /* لون المقبض */
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
-        /* لون عند المرور عليه */
-    }
-
-    /* الحاوية الخارجية المحددة لأبعاد البنر الإعلاني */
-    .slider-container {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        margin: 15px 0;
-        overflow: hidden;
-
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    /* سكة التمرير الأفقي السلس التي تسمح بالسحب بالإصبع */
-    .slider-wrapper {
-        display: flex;
-        overflow-x: auto;
-        /* تفعيل التمرير الأفقي */
-        scroll-snap-type: x mandatory;
-        /* إجبار الصورة على الاستقرار بالمنتصف عند السحب */
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        /* سحب فائق النعومة لهواتف الآيفون */
-    }
-
-    /* إخفاء شريط التمرير الرمادي البشع لتبدو كأنها تطبيق حقيقي */
-    .slider-wrapper::-webkit-scrollbar {
+    body::-webkit-scrollbar {
         display: none;
     }
 
-    /* ضبط مقاسات كل صورة (Slide) لتأخذ كامل عرض الشاشة المتاحة */
-    .slide {
-        min-width: 100%;
-        width: 100%;
-        scroll-snap-align: start;
-        /* نقطة وقوف الصورة وتثبيتها */
+    body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        background: linear-gradient(to bottom, #121212 0%, #1F1E1D 100%);
+        height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
     }
 
-    .slide img {
-        width: 100%;
-        height: auto;
-        max-height: 160px;
-        /* تحديد الارتفاع ليتطابق مع قياس صورتك المرفقة */
-        object-fit: cover;
-        display: block;
-    }
-
-    /* حاوية النقاط السفليّة وتوسيطها */
-    .slider-dots {
-        position: absolute;
-        bottom: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        /* وضع النقاط في المنتصف تماماً */
-        display: flex;
-        gap: 6px;
-        direction: ltr;
-        /* ترتيب النقاط من اليسار لليمين */
-    }
-
-    /* تصميم النقاط الدائرية البيضاء الخافتة */
-    .dot {
-        width: 8px;
-        height: 8px;
-        background-color: rgba(255, 255, 255, 0.4);
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    }
-
-    /* النقطة النشطة السوداء العريضة تماماً كالصورة المرفقة */
-    .dot.active {
-        background-color: #000000;
-        /* لون أسود */
-        width: 20px;
-        /* جعلها مستطيلة ونشطة */
-        border-radius: 4px;
-    }
-
-    .q {
-        position: absolute;
-        top: 1px;
-        font-size: 22px;
-    }
-
-
-
-
-    .w {
-        position: absolute;
-        top: 1px;
-        right: 2px;
-        cursor: pointer;
-    }
-
-    .r {
-        text-align: center;
-        position: absolute;
-        top: 1;
-        right: 160px;
-        font-size: 22px;
-    }
-
-    input {
-        position: absolute;
-        top: 60px;
-        width: 95%;
-        height: 40px;
-        background: #c9c9c96e;
-        border-radius: 10px;
-        border: none;
-        text-align: right;
-        font-size: 20px;
-    }
-
-    .op {
-        position: absolute;
-        top: 110px;
-
-    }
-
-    .op img {
-        max-width: 100%;
-        width: 100%;
-    }
-
-    /* 1. الصندوق الأب المحيط بالكروت لترتيبها بالعرض (بصف بعض) */
-    .nm {
-        display: grid;
-        gap: 60px;
-        grid-template-columns: repeat(2, 3fr);
-        padding: 10px;
-        box-sizing: border-box;
-        direction: rtl;
-        /* توجيه الترتيب بانتظام من اليمين لليسار */
-    }
-
-    /* 2. تنسيق الكارت الفردي المتجاوب ليتوافق مع كل شاشات الموبايل */
-    .jk {
-
-        border-radius: 10px;
-        border: none;
-        /* إطارك البرتقالي الأصلي */
-
-        text-align: center;
-
-
-        transition: transform 0.3s ease;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        width: 100%;
-
-
-        /* قمنا بحذف الـ width الثابت والـ 100% المتعارضين، ليأخذ الكارت مقاسه التلقائي من الأب */
-    }
-
-
-
-
-
-
-
-    .jk img,
-    .ppp {
-        width: 100%;
-        height: 160px;
-        object-fit: contain;
-        border-radius: 10px;
-        display: block;
-        margin: 0 auto;
-        /* ✅ الخاصية السحرية لدمج وإخفاء ألوان خلفيات الصور المختلفة */
-        mix-blend-mode: multiply;
-        padding: 10px;
-
-    }
-
-
-
-
-
-
-    span {
-        color: rgb(255, 72, 0);
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    button {
-        border: none;
+    .qw {
         font-size: 30px;
-        border-radius: 10px;
-        background: #ffffff;
-        cursor: pointer;
-        border: none;
-        transition: transform 0.3s;
     }
 
-    button:hover {
-        border: 2px solid #ff0606;
-        transform: translateY(-5px);
+    .we {
+        position: absolute;
+        top: 1px;
+        right: 130px;
+        color: aliceblue;
     }
 
-
-
-
-    /* تجبر الأزرار على التباعد والتوزع بالتساوي */
-
-
-
-
-
-
-    .pppp {
-        font-size: 20px;
+    .io {
+        color: #C5A880;
+        position: absolute;
+        top: 20px;
     }
 </style>
 
 <body>
-    <!-- الهيدر العلوي المتجاوب -->
-    <div class="io">
-        <h2 class="q">👤</h2>
-        <h3 class="r">الأزياء</h3>
-        <h2 class="w"> 🛒</h2>
-    </div>
-
-    <!-- صندوق البحث -->
+    <span class="qw">👑</span>
+    <h2 class="we">المتجر الرسمي</h2>
+    <p class="io">________________________________________________</p>
+    <h2 class="r">تشكيله القمصان</h2>
+    <a href="index.html" class p>⬅</a>
+    <style>
+        a {
+            text-align: right;
+            position: absolute;
+            top: 55px;
+            right: 330px;
+            color: #ffffff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    </style>
+    <style>
+        .r {
+            text-align: right;
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            color: #C5A880;
+        }
+    </style>
     <div>
-        <input type="text" placeholder="ابحث عن ملابس..." name="" id="">
-    </div>
+        <input type="text" placeholder="...بحث">
+        <br>
+        <br>
+        <div>
 
-    <!-- الحاوية الأساسية للمنتجات -->
-    <div class="op">
-
-        <!-- البنر الإعلاني: قمنا بحذف الـ 365px الثابتة لكي يستوي ويتوافق تلقائياً مع عرض الموبايل -->
-        <img src="image_227d583d.png" alt="بنر العرض"
-            style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
-
-        <!-- صندوق الشبكة (الأب) الذي سيجبر الكروت على الاص
-         طفاف بالعرض -->
-
+            <a href="q.html" class="o">التشيرت</a>
+            <a href="sss.html" class="ooo">القمصان</a>
+        </div>
         <style>
-            .as {
-                display: flex;
-                gap: 33px;
-                max-width: 100%;
-                width: 100%;
-                text-align: center;
+            .o {
                 position: absolute;
-
-            }
-
-            .as a {
-                text-decoration: none;
-                background: #d1d1d1cc;
-                height: 25px;
+                top: 150px;
+                right: 30px;
+                background: #867862;
+                padding: 3px;
                 border-radius: 10px;
-                width: 150px;
-                font-weight: bold;
-                color: #0000009d;
-                font-style: inherit;
-                transition: transform 0.3s;
+                cursor: pointer;
+                color: rgb(255, 255, 255);
             }
 
-            .as a:hover {
-                transform: translateY(-5px);
-
-                color: #ff0606;
+            .ooo {
+                position: absolute;
+                top: 150px;
+                right: 280px;
+                background: #867862;
+                padding: 3px;
+                border-radius: 10px;
+                cursor: pointer;
             }
         </style>
-        <div class="as">
-            <a href="">بنطلونات</a>
-            <a href="" sss.html>قميصات</a>
-            <a href="">السترات</a>
-            <a href="q.html" class="rr">التيشيرتات</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+
+
+    </div>
+    <div class="pp">
+
+        <div class="yu">
+            <img src="7.webp" alt="" width="190px">
+            <h2 class="ghgh" fk>بنطرون اسود</h2>
+            <span class="oo">20.000</span>
+            <br>
+            <button>شراء</button>
         </div>
-        <br>
-        <div class="nm">
-
-
-            <!-- الكرت الأول (منفصل ومغلق بشكل صحيح) -->
-            <div class="jk">
-                <img src="7.webp" alt="قميص رجالي" class="ppp" width="">
-                <h3>بنطلونات اسود </h3>
-                <span>10.000 د.ع</span>
-                <br>
-                <button>شراء</button>
-                <style>
-
-                </style>
-            </div>
-
-            <!-- الكرت الثاني (يصعد ويستقر بصف الأول فوراً) -->
-            <div class=" jk">
-                <img src="8.jpg" alt="قميص رجالي" class="ppp">
-                <h3>بنطلونات رصاصي</h3>
-                <span>23.000 د.ع</span>
-                <br>
-                <button>شراء</button>
-            </div>
-            <!-- الكرت الثاني (يصعد ويستقر بصف الأول فوراً) -->
-            <div class=" jk">
-                <img src="9.jfif" alt="قميص رجالي" class="ppp">
-                <h3>بنطلونات اسود </h3>
-                <span>11.000 د.ع</span>
-                <br>
-                <button>شراء</button>
-            </div>
-            <div class=" jk">
-                <img src="12.webp" alt="قميص رجالي" class="ppp">
-                <h3>بنطلونات ازرق</h3>
-                <span>20.000 د.ع</span>
-                <br>
-                <button>شراء</button>
-            </div>
-            <div class=" jk">
-                <img src="11.jfif" alt="قميص رجالي" class="ppp">
-                <h3>بنطونات اسود فاتح </h3>
-                <span>10.000 د.ع</span>
-                <br>
-                <button>شراء</button>
-            </div>
-
-            <div class=" jk">
-                <img src="13.jfif" alt="قميص رجالي" class="ppp">
-                <h3> بنطلونات حليبي فاتح </h3>
-                <span>20.000 د.ع</span>
-                <br>
-                <button>شراء</button>
-            </div>
-
-
+        <div class="yu">
+            <img src="8.jpg" alt="" width="180px">
+            <h2 class="ghgh">بنطرون رصاصي </h2>
+            <span class="oo">25.000</span>
+            <br>
+            <button>شراء</button>
         </div>
-        <br>
-        <style>
-            .ii {
-                color: #f2f2f2;
-                background: linear-gradient(150deg, #4e3aa5 0%, #0004ff 100%);
-                padding: 2px;
-                border-radius: 10px;
-                border: 2px solid #ff3300;
-                margin: 10px;
-                text-align: right;
-                font-size: 15px;
-            }
-
-            .yy {
-                color: #f08205;
-                background: linear-gradient(150deg, #8f4848 0%, #bf0fc5 100%);
-                padding: 2px;
-                border-radius: 10px;
-                border: 2px solid #020101;
-                margin: 10px;
-                text-align: center;
-                font-size: 20px;
-
-            }
-        </style>
-        <div class="ii">
-            <h3>الان احصل على خصم 15% من المتجر الازياء انتضرونا</h3>
+        <div class="yu">
+            <img src="10.jfif" alt="" width="180px">
+            <h2 class="ghgh">بنطرون اسود </h2>
+            <span class="oo">18.000</span>
+            <br>
+            <button>شراء</button>
         </div>
-        <div class="yy">
-            <h3>الان اكتمال قسم القمصان جار الرفع</h3>
+        <div class="yu">
+            <img src="11.jfif" alt="" width="180px">
+            <h2 class="ghgh">بنطرون ازرق</h2>
+            <span class="oo">25.000</span>
+            <br>
+            <button>شراء</button>
+        </div>
+        <div class="yu">
+            <img src="12.webp" alt="" width="180px">
+            <h2 class="ghgh"> /بنطرون ازرق</h2>
+            <span class="oo">22.000</span>
+            <br>
+            <button>شراء</button>
+        </div>
+        <div class="yu">
+            <img src="14.jfif" alt="" width="180px">
+            <h2 class="ghgh"> بنطرون حليبي /</h2>
+            <span class="oo">19.000</span>
+            <br>
+            <button>شراء</button>
         </div>
     </div>
+    <style>
+        .yu {
+            width: 46%;
+            /* تم تصغير العرض لتأخذ أقل من نصف الشاشة وتترك مسافة بالمنتصف */
+            margin: 2%;
+            /* مسافة أمان جانبية لمنع النزول لأسفل */
+            padding: 12px;
+            /* تصغير الحشوة الداخلية لتوفير مساحة */
+            height: auto;
+            /* ترك الارتفاع مرن ليتناسب مع المحتوى بدون تداخل */
+            border-radius: 20px;
+            border: 1px solid #C5A880;
+            box-sizing: border-box;
+            /* يضمن عدم خروج الكارت عن الأبعاد المحددة */
+            float: right;
+            /* لجعل الكروت تصطف بجانب بعضها من اليمين إلى اليسار */
+        }
 
+        .yu img {
+            border: 2px solid #C5A880;
+            border-radius: 15px;
+            width: 100%;
+            /* تجعل الصورة تأخذ كامل عرض الكارت المصغر تلقائياً */
+            height: 199px;
+            /* تصغير ارتفاع الصورة ليناسب الحجم الجديد */
+            object-fit: cover;
+        }
+
+        .ghgh {
+            text-align: right;
+            font-size: 13px;
+            /* تصغير حجم الخط ليناسب عرض الكارت الصغير ولا يخرج عن السطر */
+            color: #ffffff;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .oo {
+            font-size: 18px;
+            /* تصغير حجم خط السعر ليصبح متناسقاً */
+            text-align: right;
+            color: rgb(245, 139, 0);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            position: absolute;
+            top: 100px;
+            right: 5%;
+            background: #2e2c2c86;
+            text-align: right;
+            border-radius: 10px;
+            padding: 10px;
+            width: 90%;
+            border: none;
+            color: aliceblue;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            font-size: 14px;
+            /* تصغير حجم خط زر الشراء */
+            width: 100%;
+            border-radius: 15px;
+            background: #e6c18e;
+            padding: 6px;
+            font-weight: bold;
+            border: none;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+
+    <!-- الكود الذي يربط أزرار الشراء دون تغيير أي تصميم -->
+    <script>
+        document.querySelectorAll('.yu button').forEach(btn => {
+            btn.onclick = function () {
+                let name = this.parentElement.querySelector('.ghgh').innerText;
+                alert('تم شراء: ' + name);
+            }
+        });
+    </script>
 
 </body>
-<script>
-    // عدد المنتجات + المجموع الكلي
-    let cartCount = 0;
-    let totalPrice = 0;
-
-    // تحديد كل أزرار الشراء
-    const buyButtons = document.querySelectorAll("button");
-
-    // أيقونة السلة
-    const cartIcon = document.querySelector(".w");
-
-    // إنشاء عداد صغير بجانب السلة
-    const counter = document.createElement("span");
-    counter.style.position = "absolute";
-    counter.style.top = "0";
-    counter.style.right = "25px";
-    counter.style.background = "red";
-    counter.style.color = "white";
-    counter.style.borderRadius = "50%";
-    counter.style.padding = "2px 6px";
-    counter.style.fontSize = "14px";
-    counter.textContent = cartCount;
-    document.querySelector(".io").appendChild(counter);
-
-    // عند الضغط على زر شراء
-    buyButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            cartCount++;
-            totalPrice += 24000; // سعر القميص الواحد
-            counter.textContent = cartCount;
-        });
-    });
-
-    // إنشاء صندوق منبثق للسلة
-    const cartBox = document.createElement("div");
-    cartBox.style.position = "fixed";
-    cartBox.style.top = "50%";
-    cartBox.style.left = "50%";
-    cartBox.style.transform = "translate(-50%, -50%)";
-    cartBox.style.background = "#fff";
-    cartBox.style.padding = "20px";
-    cartBox.style.borderRadius = "10px";
-    cartBox.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
-    cartBox.style.display = "none";
-    cartBox.style.textAlign = "center";
-    document.body.appendChild(cartBox);
-
-    const cartText = document.createElement("p");
-    cartBox.appendChild(cartText);
-
-    const confirmBtn = document.createElement("button");
-    confirmBtn.textContent = "تم شراء ✅";
-    confirmBtn.style.marginTop = "10px";
-    confirmBtn.style.background = "green";
-    confirmBtn.style.color = "white";
-    confirmBtn.style.padding = "5px 10px";
-    confirmBtn.style.borderRadius = "5px";
-    cartBox.appendChild(confirmBtn);
-
-    // عند الضغط على السلة
-    cartIcon.addEventListener("click", () => {
-        if (cartCount > 0) {
-            cartText.textContent = "عدد المنتجات: " + cartCount + " | المجموع: " + totalPrice + " د.ع";
-            cartBox.style.display = "block";
-        } else {
-            alert("السلة فارغة 🛒");
-        }
-    });
-
-    // عند الضغط على زر تم شراء
-    confirmBtn.addEventListener("click", () => {
-        alert("تم شراء " + cartCount + " منتجات بمجموع " + totalPrice + " د.ع 🎉");
-        cartBox.style.display = "none";
-        cartCount = 0;
-        totalPrice = 0;
-        counter.textContent = cartCount;
-    });
-</script>
-
 
 </html>
